@@ -1,13 +1,16 @@
 #include <iostream>
-#include "Table.h"
 
 using namespace std;
 
+int multiply(int a, int b){
+    return a * b;
+}
+
+void MultiplyAndLog(int a, int b){
+    cout << multiply(a,b) << endl;
+}
+
 int main(){
-    int input;
-    cout << "Entrez un nombre:";
-    cin >> input;
-    Table table(input);
-    table.printTable(table.getTable());
+    MultiplyAndLog(5, 8);
     return 0;
 }
