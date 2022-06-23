@@ -1,16 +1,12 @@
+#include "Log/Log.h"
 #include <iostream>
 
-using namespace std;
+extern int s_Variable;
 
-int multiply(int a, int b){
-    return a * b;
-}
-
-void MultiplyAndLog(int a, int b){
-    cout << multiply(a,b) << endl;
-}
+extern void Function();
 
 int main(){
-    MultiplyAndLog(5, 8);
+    std::cout << s_Variable << std::endl;
+    Function();
     return 0;
 }
