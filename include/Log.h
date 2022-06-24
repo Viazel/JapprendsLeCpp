@@ -4,15 +4,17 @@
 
 class Log {
 public:
-    const int LogLevelWarning = 1;
-    const int LogeLevelError = 0;
-    const int LogLevelInfo = 2;
+    enum Level {
+        LevelError = 0,
+        LevelWarning = 1,
+        LevelInfo = 2
+    };
 
 private:
-    int m_LogLevel = LogLevelInfo;
+    Level m_LogLevel = LevelInfo;
 
 public:
-    void SetLevel(int level);
+    void SetLevel(Level level);
 
     void Error(const char* message);
 

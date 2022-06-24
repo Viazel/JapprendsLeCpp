@@ -1,12 +1,28 @@
-#include "Log/Log.h"
+#include "Log.h"
 #include <iostream>
 
-extern int s_Variable;
+class Entity {
+public:
+    float X, Y;
 
-extern void Function();
+    Entity(){
+        X = 0.0f;
+        Y = 0.0f;
+    }
+
+    Entity(float x, float y){
+        X = x;
+        Y = y;
+    }
+
+    void print(){
+        std::cout << X << ", " << Y << std::endl;
+    }
+};
 
 int main(){
-    std::cout << s_Variable << std::endl;
-    Function();
-    return 0;
+    Entity e;
+    std::cout << e.X << std::endl;
+    e.print();
+    return EXIT_SUCCESS;
 }
