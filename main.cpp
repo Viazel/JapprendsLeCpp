@@ -6,6 +6,7 @@ public:
     float X, Y;
 
     Entity(){
+        std::cout << "Constructed Entity" << std::endl;
         X = 0.0f;
         Y = 0.0f;
     }
@@ -13,6 +14,10 @@ public:
     Entity(float x, float y){
         X = x;
         Y = y;
+    }
+
+    ~Entity(){
+        std::cout << "Destroyed Entity" << std::endl;
     }
 
     void print(){
