@@ -39,7 +39,7 @@ void PrintName(Entity* entity) {
 
 int main(){
 
-    Table table(1e6);
+    Table table(8);
 
     table.PrintTable();
 

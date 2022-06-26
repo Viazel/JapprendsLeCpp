@@ -5,11 +5,10 @@ class Table {
 
 private:
     const int numberTable;
-    int* tableArray;
+    int tableArray[10];
 
 public:
     Table(const int table);
-    ~Table();
     const int* GetTable();
     void PrintTable();
 };
