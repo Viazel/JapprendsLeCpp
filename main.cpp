@@ -1,5 +1,6 @@
 #include "Log.h"
 #include <iostream>
+#include "Table.h"
 #include <string>
 
 class Entity {
@@ -23,8 +24,9 @@ public:
 class Test : public Player {
 private:
     std::string m_NameA;
+    int test;
 public:
-    Test(const std::string &name) : Player("AAAA"), m_NameA(name) {}
+    Test(const std::string &name) : Player("Salut"), m_NameA("APPP") {}
 
     std::string GetName() {
         return m_NameA;
@@ -37,15 +39,9 @@ void PrintName(Entity* entity) {
 
 int main(){
 
-    Entity* e = new Entity();
-    PrintName(e);
+    Table table(1e6);
 
-    Player* p = new Player("Viazel");
-    PrintName(p);
-
-    Test* aaa = new Test("PPP");
-    std::cout << aaa->GetName() << std::endl;
-    PrintName(aaa);
+    table.PrintTable();
 
     return EXIT_SUCCESS;
 }
