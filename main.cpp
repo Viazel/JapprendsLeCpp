@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Table.h"
 #include <string>
+#include <map>
 
 class Entity {
 public:
@@ -39,9 +40,10 @@ void PrintName(Entity* entity) {
 
 int main(){
 
-    Table table(8);
+    std::map<std::string, int> list;
+    list["Salt"] = 8;
 
-    table.PrintTable();
+    std::cout << list.find("Salt")->second << std::endl;
 
     return EXIT_SUCCESS;
 }
