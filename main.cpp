@@ -1,53 +1,51 @@
 #include "Log.h"
 #include <iostream>
+#include <string>
 
 class Entity {
 public:
-    float X, Y;
-
-    Entity(){
-        std::cout << "Constructed Entity" << std::endl;
-        X = 0.0f;
-        Y = 0.0f;
-    }
-
-    Entity(float x, float y){
-        X = x;
-        Y = y;
-    }
-
-    ~Entity(){
-        std::cout << "Destroyed Entity" << std::endl;
-    }
-
-    void print(){
-        std::cout << X << ", " << Y << std::endl;
+    virtual std::string GetName() {
+        return "Entity";
     }
 };
 
+class Player : public Entity {
+private:
+    std::string m_Name;
+public:
+    Player(const std::string& name) : m_Name(name) {}
+
+    std::string GetName() {
+        return m_Name;
+    }
+};
+
+class Test : public Player {
+private:
+    std::string m_NameA;
+public:
+    Test(const std::string &name) : Player("AAAA"), m_NameA(name) {}
+
+    std::string GetName() {
+        return m_NameA;
+    }
+};
+
+void PrintName(Entity* entity) {
+    std::cout << entity->GetName() << std::endl;
+}
+
 int main(){
-    int* test = (int*) malloc(sizeof(int) * 99);
 
-    test[0] = 2;
-    test[1] = 8;
-    test[2] = 9;
-    test[3] = 6;
-    test[4] = 89;
-    test[5] = 26311;
+    Entity* e = new Entity();
+    PrintName(e);
 
-    for (int i = 0; i < 99; ++i) {
-        std::cout << test[i] << std::endl;
-    }
+    Player* p = new Player("Viazel");
+    PrintName(p);
 
-    std::cout << "--------------------" << std::endl;
-
-    realloc(test, sizeof(int) * 6);
-
-    for (int i = 0; i < 99; ++i) {
-        std::cout << test[i] << std::endl;
-    }
-
-    free(test);
+    Test* aaa = new Test("PPP");
+    std::cout << aaa->GetName() << std::endl;
+    PrintName(aaa);
 
     return EXIT_SUCCESS;
 }
