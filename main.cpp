@@ -1,8 +1,5 @@
-#include "Log.h"
 #include <iostream>
-#include "Table.h"
 #include <string>
-#include <map>
 
 class Entity {
 public:
@@ -27,7 +24,7 @@ private:
     std::string m_NameA;
     int test;
 public:
-    Test(const std::string &name) : Player("Salut"), m_NameA("APPP") {}
+    Test(const std::string &name) : Player("AAA"), m_NameA(name) {}
 
     std::string GetName() {
         return m_NameA;
@@ -40,10 +37,14 @@ void PrintName(Entity* entity) {
 
 int main(){
 
-    std::map<std::string, int> list;
-    list["Salt"] = 8;
+    Player p("Salut");
+    Entity e;
+    Test t("Hey");
 
-    std::cout << list.find("Salt")->second << std::endl;
+    PrintName(&p);
+    PrintName(&e);
+    PrintName(&t);
+
 
     return EXIT_SUCCESS;
 }
