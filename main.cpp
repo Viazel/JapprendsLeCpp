@@ -1,50 +1,44 @@
 #include <iostream>
 #include <string>
 
-class Entity {
+class Printable {
 public:
-    virtual std::string GetName() {
-        return "Entity";
-    }
+    virtual std::string GetClassName() = 0;
+    virtual std::string GetAge() = 0;
+};
+
+class Entity : public Printable {
+public:
+    virtual std::string GetName() {return "Entite";}
+    std::string GetClassName() override {return "TMTC";}
+    std::string GetAge() override {return "18";}
 };
 
 class Player : public Entity {
 private:
     std::string m_Name;
-public:
-    Player(const std::string& name) : m_Name(name) {}
 
-    std::string GetName() {
-        return m_Name;
-    }
+public:
+    Player(const std::string name) : m_Name(name) {}
+    std::string GetName() override {return m_Name;}
+    std::string GetClassName() override {return "Player";}
+    std::string GetAge() override {return "28";}
 };
 
-class Test : public Player {
-private:
-    std::string m_NameA;
-    int test;
-public:
-    Test(const std::string &name) : Player("AAA"), m_NameA(name) {}
-
-    std::string GetName() {
-        return m_NameA;
-    }
-};
-
-void PrintName(Entity* entity) {
-    std::cout << entity->GetName() << std::endl;
+void Print(Printable* e){
+    std::cout << e->GetAge() << std::endl;
 }
 
 int main(){
 
-    Player p("Salut");
-    Entity e;
-    Test t("Hey");
+    Printable* e = new Entity();
+    e->GetClassName();
 
-    PrintName(&p);
-    PrintName(&e);
-    PrintName(&t);
+    Entity a;
+    Player p("Viazel");
 
+    Print(e);
+    Print(&p);
 
     return EXIT_SUCCESS;
 }
