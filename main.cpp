@@ -47,10 +47,14 @@ std::ostream& operator<<(std::ostream& stream, const String& string) {
     return stream;
 }
 
+void Print(const String& string) {
+    std::cout << string << std::endl;
+}
+
 int main(){
     String string = "Salut";
     String test = string;
-    *(test.GetTest()) = 8;
-    std::cout << *(string.GetTest()) << std::endl;
+    Print(string);
+    Print(test);
     return 0;
 }
