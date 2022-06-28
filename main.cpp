@@ -1,25 +1,56 @@
 #include <iostream>
-#include <string>
+#include <cstring>
 
-class Entity {
+class String {
 private:
-    std::string m_Name;
+    char* m_Buffer;
+    int* test;
+    unsigned int m_Size;
 public:
-    Entity(const std::string& name) : m_Name(name) {}
-    Entity() {
-        m_Name = "Unknow";
-    };
+    String(const char* string) {
+        m_Size = strlen(string);
+        test = new int(56);
+        m_Buffer = new char[m_Size + 1];
+        memcpy(m_Buffer, string, m_Size);
+        m_Buffer[m_Size] = 0;
+    }
 
-    const std::string& GetName() const {return m_Name;}
+    String(const String& other) : m_Size(other.m_Size){
+        m_Buffer = new char[m_Size + 1];
+        test = new int(56);
+        memcpy(m_Buffer, other.m_Buffer, m_Size + 1 );
+        memcpy(test, other.test, sizeof(int));
+    }
+
+    ~String() {
+        delete[] m_Buffer;
+        delete test;
+    }
+
+    int* GetTest() const {
+        return test;
+    }
+
+    const unsigned int& GetLength() const {
+        return m_Size;
+    }
+
+    char& operator[] (const int& index) const {
+        return m_Buffer[index];
+    }
+
+    friend std::ostream& operator<<(std::ostream& stream, const String& string);
 };
 
+std::ostream& operator<<(std::ostream& stream, const String& string) {
+    stream << string.m_Buffer;
+    return stream;
+}
+
 int main(){
-
-    Entity e;
-    std::cout << e.GetName() << std::endl;
-
-    Entity e1("The Cherno");
-    std::cout << e1.GetName() << std::endl;
-
-    return EXIT_SUCCESS;
+    String string = "Salut";
+    String test = string;
+    *(test.GetTest()) = 8;
+    std::cout << *(string.GetTest()) << std::endl;
+    return 0;
 }
