@@ -1,60 +1,38 @@
 #include <iostream>
 #include <cstring>
 
-class String {
+class Entity {
 private:
-    char* m_Buffer;
-    int* test;
-    unsigned int m_Size;
+    int* i;
+
 public:
-    String(const char* string) {
-        m_Size = strlen(string);
-        test = new int(56);
-        m_Buffer = new char[m_Size + 1];
-        memcpy(m_Buffer, string, m_Size);
-        m_Buffer[m_Size] = 0;
-    }
 
-    String(const String& other) : m_Size(other.m_Size){
-        m_Buffer = new char[m_Size + 1];
-        test = new int(56);
-        memcpy(m_Buffer, other.m_Buffer, m_Size + 1 );
-        memcpy(test, other.test, sizeof(int));
-    }
+   Entity(const int& i) {
+       this->i = new int(i);
+   }
 
-    ~String() {
-        delete[] m_Buffer;
-        delete test;
-    }
+   Entity(const Entity& entity) {
+       i = new int(entity.GetInt());
+   }
 
-    int* GetTest() const {
-        return test;
-    }
+   const int& GetInt() const {
+       return *i;
+   }
 
-    const unsigned int& GetLength() const {
-        return m_Size;
-    }
+   void SetInt(const int& index) {
+       *i = index;
+   }
 
-    char& operator[] (const int& index) const {
-        return m_Buffer[index];
-    }
-
-    friend std::ostream& operator<<(std::ostream& stream, const String& string);
+   ~Entity() {
+       delete i;
+   }
 };
 
-std::ostream& operator<<(std::ostream& stream, const String& string) {
-    stream << string.m_Buffer;
-    return stream;
-}
-
-void Print(const String& string) {
-    std::cout << string << std::endl;
-}
-
 int main(){
-    String string = "Salut";
-    String test = string;
-    Print(string);
-    Print(test);
+
+    std::string aa = "Salut";
+
+    std::cout << aa.length() << std::endl;
+
     return 0;
 }
