@@ -2,6 +2,8 @@ JapprendsLeCpp.sln
 JapprendsLeCpp.slnproj
 JapprendsLeCpp.slnproj.filters
 JapprendsLeCpp.slnproj.user
+JapprendsLeCpp.vcxproj
+JapprendsLeCpp.vcxproj.user
 
 bin/
 bin-int/
