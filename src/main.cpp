@@ -1,8 +1,14 @@
 #include <iostream>
 
+#include "Table/Table.h"
+
 int main() {
 
-	std::cout << "Salut les gens !" << std::endl;
+	Table ta(4);
+
+	ta.PrintTable();
+
+	std::cout << ta.GetTable(0) << std::endl;
 
 	return 0;
 }
