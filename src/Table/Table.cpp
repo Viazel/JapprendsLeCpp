@@ -22,6 +22,6 @@ const int& Table::GetTable(const int& number) const {
 void Table::PrintTable() const {
 	for (int i = 0; i <= 10; i++)
 	{
-		std::cout << *this->table << "*" << i << "=" << this->table[i] << std::endl;;
+		std::cout << this->table[1] << "*" << i << "=" << this->table[i] << std::endl;;
 	}
 }

@@ -4,11 +4,11 @@
 
 int main() {
 
-	Table ta(4);
+	Table ta(49);
 
 	ta.PrintTable();
 
-	std::cout << ta.GetTable(0) << std::endl;
+	std::cout << ta.GetTable(8) << std::endl;
 
 	return 0;
 }
