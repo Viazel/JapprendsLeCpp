@@ -5,5 +5,7 @@ JapprendsLeCpp.slnproj.user
 JapprendsLeCpp.vcxproj
 JapprendsLeCpp.vcxproj.user
 
+.vs/
+
 bin/
 bin-int/
