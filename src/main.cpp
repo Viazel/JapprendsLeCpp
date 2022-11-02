@@ -1,4 +1,8 @@
 #include <GLFW/glfw3.h>
+#define STB_IMAGE_IMPLEMENTATION
+#include <stb_image.h>
+
+#define GLFW_INCLUDE_VULKAN
 
 int main(void)
 {
@@ -9,7 +13,8 @@ int main(void)
         return -1;
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(640, 480, "Hello World", NULL, NULL);
+    window = glfwCreateWindow(640, 480, "My Window", NULL, NULL);
+
     if (!window)
     {
         glfwTerminate();
@@ -18,6 +23,17 @@ int main(void)
 
     /* Make the window's context current */
     glfwMakeContextCurrent(window);
+
+    int width, heigth;
+    int channels;
+    unsigned char* pixels = stbi_load("C:/Code/C++/JapprendsLeCpp/ressources/icon.png", &width, &heigth, &channels, 4);
+
+    GLFWimage icon[1];
+    icon[0].height = heigth;
+    icon[0].width = width;
+    icon[0].pixels = pixels;
+
+    glfwSetWindowIcon(window, 1, icon);
 
     /* Loop until the user closes the window */
     while (!glfwWindowShouldClose(window))
